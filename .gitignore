@@ -1,0 +1,13 @@
+### Node template
+# Logs
+*.log
+*.log.*
+npm-debug.log*
+logs/*
+
+# Dependency directory
+# https://docs.npmjs.com/misc/faq#should-i-check-my-node-modules-folder-into-git
+node_modules
+
+# WebStorm project config
+.idea/
