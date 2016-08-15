@@ -11,9 +11,11 @@ const config = require('./config');
 const port = process.env.API_PORT || 3000;
 const env = process.env.NODE_ENV || 'local';
 const app = express();
-
+const morgan = require('morgan');
 // export app
 module.exports = app;
+
+app.use(morgan('tiny'));
 
 app.use(cookieParser());
 // bodyParser should be above methodOverride
