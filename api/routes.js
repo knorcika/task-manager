@@ -6,6 +6,7 @@ const router = express.Router();
 
 // Controllers
 const example = require('./controllers/example');
+const task = require('.controller/task');
 
 // Routes
 router.get('/', function(req, res){
