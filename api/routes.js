@@ -6,6 +6,7 @@ const router = express.Router();
 
 // Controllers
 const example = require('./controllers/example');
+const task = require('./controllers/task');
 const profile = require('./controllers/profile');
 
 // Routes
@@ -22,5 +23,9 @@ router.get('/examples/create', example.create);
 router.get('/profile', profile.list);
 
 router.get('/profile/create', profile.create);
+
+router.get('/task', task.list);
+
+router.get('/task/create', task.create);
 
 module.exports = router;
