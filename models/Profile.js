@@ -3,7 +3,10 @@ const Schema = mongoose.Schema;
 
 var ProfileSchema = new Schema({
   name: {type: String},
-  price: {type: Number},
+  male: {type: Boolean},
+  age: {type: Number},
+  address: {type: String},
+  email: {type: String},
   createdAt: {type: Date, default: Date.now}
 });
 
