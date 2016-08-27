@@ -15,10 +15,25 @@ router.get('/', function(req, res){
 });
 
 // get examples
+// type: get
 router.get('/examples', example.list);
 
-// create example by query string. URL: localhost:3000/examples/create?name=Banana&price=20
-router.get('/examples/create', example.create);
+// create example
+// type: post
+// URL: localhost:3000/examples
+// body = {"name": "Name", "price": "10"}
+router.post('/examples', example.create);
+
+// update example
+// type: patch
+// URL: localhost:3000/examples/57c18c90caa2e6141fab4962
+// body = {"name": "Name", "price": "10"}
+router.patch('/examples/:exampleId', example.update);
+
+// update example
+// type: delete
+// URL: localhost:3000/examples/57c18c90caa2e6141fab4962
+router.delete('/examples/:exampleId', example.delete);
 
 router.get('/profile', profile.list);
 
