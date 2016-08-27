@@ -22,6 +22,17 @@ Start the application
 npm start
 ```
 ----
+## Test
+
+### Install Mocha
+```
+npm install --global mocha
+```
+
+### Run tests
+```
+npm test
+```
 
 ## Usage
 
