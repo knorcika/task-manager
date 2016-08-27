@@ -28,7 +28,7 @@ router.post('/examples', example.create);
 // type: patch
 // URL: localhost:3000/examples/57c18c90caa2e6141fab4962
 // body = {"name": "Name", "price": "10"}
-router.patch('/examples/:exampleId', example.update);
+router.put('/examples/:exampleId', example.update);
 
 // update example
 // type: delete

@@ -26,6 +26,7 @@ module.exports = {
   update: function (req, res) {
     var exampleId = req.params.exampleId;
     var updateParams = req.body;
+    console.log(updateParams);
     Example.update({_id: ObjectId(exampleId)}, updateParams, function (err) {
       if (!!err) {
         return res.send(err);
