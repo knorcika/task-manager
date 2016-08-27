@@ -55,6 +55,8 @@ var mongoConnection = mongoose.connect('mongodb://localhost:27017/task-manager')
 
 mongoConnection.on('open', function () {
   app.listen(port);
-  app.emit('listened', null);
+  app.emit('listening', null);
   console.info('Express app started on port ' + port);
 });
+
+module.exports = app;
