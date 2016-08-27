@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./server"
+    "start": "node ./server",
+    "test": "mocha ./test -t 5000 --recursive"
   },
   "dependencies": {
     "app-root-path": "^1.3.0",
