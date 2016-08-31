@@ -11,7 +11,7 @@ module.exports = {
     });
   },
   create: function (req, res) {
-    Profile.create({name: req.query.name, male: req.query.male, age: req.query.age, address: req.query.address, email: req.query.email}, function (err, profile) {
+    Profile.create({name: req.query.name, gender: req.query.gender, age: req.query.age, address: req.query.address, email: req.query.email}, function (err, profile) {
       if (!!err) {
         res.send(err);
       } else {
