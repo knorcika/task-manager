@@ -11,9 +11,17 @@ const config = require('./config');
 const port = process.env.API_PORT || 3000;
 const env = process.env.NODE_ENV || 'local';
 const app = express();
+const morgan = require('morgan');
+
+const mongoose = require('mongoose');
+
+// require models
+const models = require('require-all')(__dirname + '/models');
 
 // export app
 module.exports = app;
+
+app.use(morgan('tiny'));
 
 app.use(cookieParser());
 // bodyParser should be above methodOverride
@@ -37,13 +45,18 @@ app.use(require('./routes.js'));
 
 app.use((err, req, res, next) => {
   console.log(err);
-})
-;
+});
 
 process.on('uncaughtException', function (err) {
   console.log(err);
 });
 
-app.listen(port);
-app.emit('listened', null);
-console.info('Express app started on port ' + port);
+var mongoConnection = mongoose.connect('mongodb://localhost:27017/task-manager').connection;
+
+mongoConnection.on('open', function () {
+  app.listen(port);
+  app.emit('listening', null);
+  console.info('Express app started on port ' + port);
+});
+
+module.exports = app;
