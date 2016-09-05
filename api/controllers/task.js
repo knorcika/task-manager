@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Task = mongoose.model('Task');
+const TaskId = mongoose.Types.TaskId;
 
 module.exports = {
   list: function (req, res) {
@@ -11,12 +12,35 @@ module.exports = {
     });
   },
   create: function (req, res) {
-    Task.create({name: req.query.name }, function (err, task) {
+    var createParams = req.body;
+    console.log(createParams);
+    Task.create({name: createParams.name }, function (err, example) {
       if (!!err) {
-        res.send(err);
-      } else {
-        res.send(task);
+        return res.send(err);
       }
+      return res.send(example);
+    })
+  },
+
+  update: function (req, res) {
+    var taskId = req.params.taskId;
+    var updateParams = req.body;
+    console.log(updateParams);
+    Task.update({_id: ObjectId(taskId)}, updateParams, function (err) {
+      if (!!err) {
+        return res.send(err);
+      }
+      return res.send('success');
+    })
+  },
+
+  delete: function (req, res) {
+    var taskId = req.params.taskId;
+    Task.remove({_id: ObjectId(taskId)}, function(err){
+      if(!!err){
+        return res.send(err);
+      }
+      return res.send('success');
     })
   }
 };
