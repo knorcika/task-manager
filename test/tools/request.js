@@ -58,6 +58,23 @@ class Request {
     this.method = 'PUT';
     return this;
   }
+
+  /**
+   * PATCH method
+   * @param path
+   * @returns {Request}
+   */
+  patch(path){
+    this.fullUrl = this.url + path;
+    this.method = 'PATCH';
+    return this;
+  }
+
+  /**
+   * Set data
+   * @param data
+   * @returns {Request}
+   */
   data(data){
     this.data = data;
     return this;
