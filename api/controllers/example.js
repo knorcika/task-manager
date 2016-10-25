@@ -37,8 +37,8 @@ module.exports = {
 
   delete: function (req, res) {
     var exampleId = req.params.exampleId;
-    Example.remove({_id: ObjectId(exampleId)}, function(err){
-      if(!!err){
+    Example.remove({_id: ObjectId(exampleId)}, function (err) {
+      if (!!err) {
         return res.send(err);
       }
       return res.send('success');
