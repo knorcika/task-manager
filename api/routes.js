@@ -6,6 +6,7 @@ const router = express.Router();
 
 // Controllers
 const example = require('./controllers/example');
+const profile = require('./controllers/profile');
 
 // Routes
 router.get('/', function(req, res){
@@ -32,5 +33,10 @@ router.put('/examples/:exampleId', example.update);
 // type: delete
 // URL: localhost:3000/examples/57c18c90caa2e6141fab4962
 router.delete('/examples/:exampleId', example.delete);
+
+//get profiles
+router.get('/profiles',profile.list);
+//create profile
+router.post('/profiles',profile.create);
 
 module.exports = router;
