@@ -6,7 +6,7 @@ module.exports = {
   profile0: {
     _id: ObjectId(),
     name: 'Teszt Elek',
-    gender: 'man',
+    gender: 'male',
     age: 25,
     address: 'Ady Endre 16',
     email: 'tesztelek@teszt.hu'
@@ -14,7 +14,7 @@ module.exports = {
   profile1: {
     _id: ObjectId(),
     name: 'Beta Eva',
-    gender: 'woman',
+    gender: 'female',
     age: 19,
     address: 'Petofi Sandor 67',
     email: 'beta@gmail.com'
@@ -22,7 +22,7 @@ module.exports = {
   profile2: {
     _id: ObjectId(),
     name: 'Alfa Andras',
-    gender: 'man',
+    gender: 'male',
     age: 32,
     address: 'Csillag ter 4',
     email: 'alfa@gmail.com'

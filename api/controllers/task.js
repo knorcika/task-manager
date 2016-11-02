@@ -1,64 +1,58 @@
 const mongoose = require('mongoose');
-const Profile = mongoose.model('Profile');
+const Task = mongoose.model('Task');
 const ObjectId = mongoose.Types.ObjectId;
 
 module.exports = {
+
   list: function (req, res) {
-    Profile.find({}, function (err, profiles) {
+    Task.find({}, function (err, tasks) {
       if (!!err) {
         return res.send(err);
       }
-      return res.send(profiles);
+      return res.send(tasks);
     });
   },
 
   create: function (req, res) {
+
     var createParams = req.body;
     console.log(createParams);
-    var data = {
-      name: createParams.name,
-      gender: createParams.gender,
-      age: createParams.age,
-      address: createParams.address,
-      email: createParams.email
-    };
-    Profile.create(data, function (err, profiles) {
+
+    Task.create({name: createParams.name}, function (err, tasks) {
       if (!!err) {
         return res.send(err);
       }
-      return res.send(profiles);
+      return res.send(tasks)
     });
   },
 
 
   update: function (req, res) {
 
-    var profileId = req.params.profileId;
+    var taskId = req.params.taskId;
     var updateParams = req.body;
     console.log(updateParams);
 
-    Profile.update({_id: ObjectId(profileId)}, updateParams, function (err) {
+    Task.update({_id: ObjectId(taskId)}, updateParams, function (err) {
       if (!!err) {
         return res.send(err);
       }
       return res.send('success');
-    })
-
+    });
   },
 
 
   delete: function (req, res) {
 
-    var profileId = req.params.profileId;
+    var taskId = req.params.taskId;
 
-    Profile.remove({_id: ObjectId(profileId)}, function (err) {
+    Task.remove({_id: ObjectId(taskId)}, function (err) {
       if (!!err) {
         return res.send(err);
       }
       return res.send('success');
-    })
-
+    });
   }
 
-
 }
+

@@ -7,9 +7,10 @@ const router = express.Router();
 // Controllers
 const example = require('./controllers/example');
 const profile = require('./controllers/profile');
+const task = require('./controllers/task');
 
 // Routes
-router.get('/', function(req, res){
+router.get('/', function (req, res) {
   res.send('Hello Wolrd!');
 });
 
@@ -34,9 +35,16 @@ router.put('/examples/:exampleId', example.update);
 // URL: localhost:3000/examples/57c18c90caa2e6141fab4962
 router.delete('/examples/:exampleId', example.delete);
 
-//get profiles
-router.get('/profiles',profile.list);
-//create profile
-router.post('/profiles',profile.create);
+
+router.get('/profiles', profile.list);
+router.post('/profiles', profile.create);
+router.put('/profiles/:profileId', profile.update);
+router.delete('/profiles/:profileId', profile.delete);
+
+
+router.get('/tasks', task.list);
+router.post('/tasks', task.create);
+router.put('/tasks/:taskId', task.update);
+router.delete('/tasks/:taskId', task.delete);
 
 module.exports = router;
