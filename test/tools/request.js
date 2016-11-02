@@ -13,6 +13,7 @@ class Request {
     }else{
       this.url = server + ':' + port;
     }
+    this.jsonMethods = ['PUT', 'POST', 'PATCH'];
   }
 
   /**
@@ -89,7 +90,7 @@ class Request {
       url: this.fullUrl,
       method: this.method
     };
-    if(this.method == 'POST' || this.method == 'PUT'){
+    if(this.jsonMethods.indexOf(this.method) > -1){
       requestData['json'] = this.data;
     }
     return new Promise((resolve, reject) => {
