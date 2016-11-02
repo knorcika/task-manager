@@ -2,7 +2,7 @@
 const chai = require('chai');
 const expect = chai.expect;
 const Request = require('../tools/request');
-const ProfileFixtures = require('../fixtures/Profile');
+const profileFixtures = require('../fixtures/Profile');
 
 describe('Profile', () => {
 
@@ -25,7 +25,7 @@ describe('Profile', () => {
       let path = '/profiles';
       let data = {
         name: 'Teszt Elekne Proba Anna',
-        gender: 'woman',
+        gender: 'female',
         age: 24,
         address: 'Ady Endre 16',
         email: 'tesztne@teszt.hu'
@@ -46,6 +46,41 @@ describe('Profile', () => {
         .catch(done);
     });
   });
+
+
+  describe('#update', () => {
+    it('should update an profile', done => {
+      let path = '/profiles/'+profileFixtures.profile0._id.toString();
+      let data = {name: 'Test Elek22222', age: 27};
+      new Request()
+        .put(path)
+        .data(data)
+        .send()
+        .then(result => {
+          expect(result).to.equal('success');
+          done();
+        })
+        .catch(done);
+    });
+  });
+
+
+  describe('#delete', () => {
+    it('should delete an profile', done => {
+      let path = '/profiles/'+profileFixtures.profile0._id.toString();
+      new Request()
+        .delete(path)
+        .send()
+        .then(result => {
+          expect(result).to.equal('success');
+          done();
+        })
+        .catch(done);
+    });
+  });
+
+
+
 });
 
 
