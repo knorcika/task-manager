@@ -46,5 +46,6 @@ router.get('/tasks', task.list);
 router.post('/tasks', task.create);
 router.put('/tasks/:taskId', task.update);
 router.delete('/tasks/:taskId', task.delete);
+router.post('/tasks/:taskId', task.assign);
 
 module.exports = router;
