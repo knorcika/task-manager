@@ -3,7 +3,8 @@ const Schema = mongoose.Schema;
 
 var TaskSchema = new Schema({
   name: {type: String},
-  createdAt: {type: Date, default: Date.now}
+  createdAt: {type: Date, default: Date.now},
+  assigned: {type: Array, ref: 'Profile', default: []}
 });
 
 mongoose.model('Task', TaskSchema);
