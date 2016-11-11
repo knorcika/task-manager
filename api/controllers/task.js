@@ -70,13 +70,10 @@ module.exports = {
       function (item, callback) {
         Task.update({_id: ObjectId(taskId)}, {$addToSet: {assigned: item}}, function (err, tasks) {
           if (!!err) {
-            return res.send(err);
+            return callback(err);
           }
-          Task.populate(tasks, {path: 'assigned'});
-          //return res.send(tasks);
+          callback();
         });
-
-        callback();
       },
 
       function (err) {

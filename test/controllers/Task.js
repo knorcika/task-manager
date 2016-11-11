@@ -4,6 +4,7 @@ const chai = require('chai');
 const expect = chai.expect;
 const Request = require('../tools/request');
 const taskFixtures = require('../fixtures/Task');
+const profileFixtures = require('../fixtures/Profile');
 const async = require('async');
 
 describe('Task', () => {
@@ -76,7 +77,8 @@ describe('Task', () => {
   describe('#assign', () => {
     it('add assign', done => {
       let path = '/tasks/' + taskFixtures.task1._id.toString();
-      let data = {assigned: ['2', '1']};
+      //let data = {assigned: ['2', '1']};
+      let data = {assigned: [profileFixtures.profile0._id.toString(), profileFixtures.profile1._id.toString(), profileFixtures.profile1._id.toString()]};
       new Request()
         .post(path)
         .data(data)
@@ -88,23 +90,5 @@ describe('Task', () => {
         .catch(done);
     });
   });
-
-  describe('#assign', () => {
-    it('add assign', done => {
-      let path = '/tasks/' + taskFixtures.task1._id.toString();
-      let data = {assigned: ['3', '1']};
-      new Request()
-        .post(path)
-        .data(data)
-        .send()
-        .then(result => {
-          expect(result).to.equal('success');
-          done();
-        })
-        .catch(done);
-    });
-  });
-
-
 
 });
